@@ -3,436 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be My Valentine? 💕</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Will you be my Valentine? ❤️</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
         
         body {
-            background-color: #fff0f5;
+            background-color: #fff5f7;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: 
-                radial-gradient(#ffc0cb 2px, transparent 2px),
-                radial-gradient(#ffb6c1 2px, transparent 2px);
-            background-size: 60px 60px;
-            background-position: 0 0, 30px 30px;
-            overflow: hidden;
-            position: relative;
+            padding: 20px;
         }
         
         .container {
-            max-width: 900px;
-            width: 90%;
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(255, 20, 147, 0.2);
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
             padding: 30px;
+            box-shadow: 0 5px 20px rgba(255, 0, 85, 0.08);
             text-align: center;
             position: relative;
-            z-index: 10;
-            border: 8px solid #ff69b4;
-        }
-        
-        .heart-bg {
-            position: absolute;
-            font-size: 24px;
-            color: rgba(255, 105, 180, 0.1);
-            z-index: 0;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
+            border: 1px solid #ffe0e6;
         }
         
         h1 {
-            color: #ff1493;
-            font-size: 3rem;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-            text-shadow: 3px 3px 0 #ffc0cb;
-        }
-        
-        .content-wrapper {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 30px;
-            margin: 25px 0;
-            position: relative;
-            z-index: 1;
+            color: #e91e63;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            font-weight: 600;
         }
         
         .picture-frame {
-            flex: 1;
-            min-width: 250px;
-            max-width: 400px;
-            border: 12px solid #ff69b4;
-            border-radius: 20px;
+            width: 100%;
+            height: 300px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            background-color: #fff;
+            margin: 0 auto 25px;
             position: relative;
+            border: 2px solid #ffb6c1;
         }
         
-        .picture-frame::before {
-            content: '';
+        .valentine-pic {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .image-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(255,105,180,0.1) 0%, rgba(255,20,147,0.05) 100%);
-            z-index: 1;
-            pointer-events: none;
-        }
-        
-        .valentine-pic {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-        
-        .picture-frame:hover .valentine-pic {
-            transform: scale(1.05);
-        }
-        
-        .message-box {
-            flex: 1;
-            padding: 20px;
-            background: linear-gradient(135deg, #fff5f7 0%, #ffe8ec 100%);
-            border-radius: 20px;
-            border: 5px dashed #ff69b4;
+            background: linear-gradient(to bottom, rgba(233, 30, 99, 0.55), rgba(255, 182, 193, 0.5));
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            padding: 20px;
+            color: white;
         }
         
-        .message {
-            font-size: 1.8rem;
-            color: #d81b60;
-            margin-bottom: 20px;
-            line-height: 1.5;
-            text-align: center;
+        .image-message {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            line-height: 1.4;
         }
         
-        .hearts {
-            font-size: 2.5rem;
-            color: #ff4081;
-            margin: 15px 0;
-            animation: pulse 1.5s infinite alternate;
+        .image-hearts {
+            font-size: 2rem;
+            margin: 10px 0;
         }
         
-        @keyframes pulse {
-            from { transform: scale(0.9); }
-            to { transform: scale(1.1); }
-        }
-        
-        .button-container {
+        .buttons {
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 30px 0 20px;
-            position: relative;
-            z-index: 1;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
         }
         
-        .btn {
-            padding: 18px 35px;
-            font-size: 1.7rem;
+        button {
+            padding: 16px 30px;
+            font-size: 1.3rem;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s;
+            font-weight: 500;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            min-width: 180px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 100;
         }
         
-        .btn-no {
-            background-color: #ff6b8b;
+        .yes-btn {
+            background: #e91e63;
+            color: white;
+        }
+        
+        .no-btn {
+            background: #ff6b8b;
             color: white;
             position: relative;
             z-index: 100;
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
         
-        .btn-yes {
-            background-color: #ff4081;
-            color: white;
-            position: relative;
-            z-index: 100;
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        .btn:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+        button:active {
+            transform: translateY(0);
         }
         
-        .btn-no:hover {
-            background-color: #ff4757;
+        .emoji {
+            font-size: 1.5rem;
         }
         
-        .btn-yes:hover {
-            background-color: #ff1a6d;
-        }
-        
-        .btn:active {
-            transform: translateY(-4px);
-        }
-        
-        .no-face {
-            font-size: 2rem;
-        }
-        
-        .yes-face {
-            font-size: 2rem;
-        }
-        
-        .hidden-message {
+        .response-message {
             display: none;
-            font-size: 2.2rem;
-            color: #ff1493;
-            margin-top: 25px;
+            font-size: 1.4rem;
+            color: #e91e63;
             padding: 20px;
-            background-color: rgba(255, 182, 193, 0.3);
-            border-radius: 20px;
-            animation: fadeIn 1s ease;
+            background: #fff5f7;
+            border-radius: 15px;
+            margin-top: 20px;
+            animation: fadeIn 0.5s;
+            line-height: 1.5;
+            border-left: 4px solid #e91e63;
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .footer {
-            margin-top: 25px;
-            color: #ff69b4;
-            font-size: 1.2rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Animation for the no button when hovered */
-        .run-away {
-            animation: runAway 0.5s ease;
-        }
-        
-        @keyframes runAway {
-            0% { transform: translate(var(--x), var(--y)) scale(1); }
-            25% { transform: translate(calc(var(--x) - 50px), calc(var(--y) - 30px)) scale(0.9); }
-            50% { transform: translate(calc(var(--x) + 40px), calc(var(--y) + 20px)) scale(1.1); }
-            75% { transform: translate(calc(var(--x) - 30px), calc(var(--y) + 40px)) scale(0.95); }
-            100% { transform: translate(var(--x), var(--y)) scale(1); }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .floating-text {
             position: absolute;
-            font-size: 1.5rem;
-            color: #ff1493;
+            font-size: 1.2rem;
+            color: #e91e63;
             font-weight: bold;
             opacity: 0;
             pointer-events: none;
             z-index: 50;
         }
         
-        /* Instructions */
         .instructions {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 10px 15px;
-            border-radius: 10px;
-            font-size: 1rem;
-            color: #ff4081;
-            border: 2px dashed #ff69b4;
-            z-index: 300;
-            max-width: 400px;
-            text-align: center;
-        }
-        
-        .picture-caption {
-            margin-top: 10px;
+            margin-top: 15px;
+            color: #ff6b8b;
+            font-size: 0.9rem;
             font-style: italic;
-            color: #ff4081;
-            font-size: 1.1rem;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .content-wrapper {
-                flex-direction: column;
-            }
-            
-            .picture-frame {
-                max-width: 100%;
-            }
-            
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .message {
-                font-size: 1.5rem;
-            }
-            
-            .btn {
-                padding: 16px 30px;
-                font-size: 1.5rem;
-                min-width: 160px;
-            }
-            
-            .button-container {
-                gap: 20px;
-            }
-            
-            .hidden-message {
-                font-size: 1.8rem;
-            }
         }
         
         @media (max-width: 600px) {
-            .button-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 250px;
-            }
-        }
-        
-        @media (max-width: 480px) {
             .container {
-                padding: 25px 20px;
+                padding: 20px;
             }
             
             h1 {
-                font-size: 2rem;
+                font-size: 1.7rem;
             }
             
-            .message {
+            .picture-frame {
+                height: 250px;
+            }
+            
+            .image-message {
                 font-size: 1.3rem;
             }
             
-            .btn {
+            button {
                 padding: 14px 25px;
-                font-size: 1.3rem;
-                min-width: 140px;
+                font-size: 1.2rem;
             }
             
-            .valentine-pic {
-                height: 280px;
-            }
-            
-            .hidden-message {
-                font-size: 1.6rem;
-            }
-            
-            .instructions {
-                font-size: 0.9rem;
-                bottom: 10px;
-                left: 10px;
-                right: 10px;
-                max-width: none;
-                transform: none;
-                left: 10px;
-                right: 10px;
+            .response-message {
+                font-size: 1.2rem;
+                padding: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Background hearts -->
-    <div class="heart-bg" style="top: 10%; left: 5%;">💖</div>
-    <div class="heart-bg" style="top: 15%; right: 8%;">💗</div>
-    <div class="heart-bg" style="bottom: 20%; left: 10%;">💓</div>
-    <div class="heart-bg" style="bottom: 15%; right: 12%;">💞</div>
-    <div class="heart-bg" style="top: 40%; left: 8%;">💕</div>
-    <div class="heart-bg" style="top: 50%; right: 5%;">💘</div>
-    
-    <div class="container">
-        <h1>Will You Be My Valentine? 💕</h1>
+    <div class="container" id="container">
+        <h1>Will you be my Valentine? ❤️</h1>
         
-        <div class="content-wrapper">
-            <div class="picture-frame">
-                <!-- Valentine's picture placeholder - Replace with your own image -->
-                <img src="pics.jpeg" 
-                     alt="Valentine's Day" class="valentine-pic">
-                <div class="picture-caption">Every moment with you is special 💖</div>
-            </div>
+        <div class="picture-frame">
+            <img src="pics.jpeg" 
+                 alt="Valentine's Day" class="valentine-pic">
             
-            <div class="message-box">
-                <div class="message">
-                    I have something very special to ask you...
-                </div>
-                
-                <div class="hearts">💖 💗 💓 💞</div>
-                
-                <div class="message">
-                    You make every day brighter and my heart happier. Will you be my Valentine?
-                </div>
+            <div class="image-overlay">
+                <div class="image-message"></div>
+                <div class="image-hearts">💖 💗 💓</div>
+                <div class="image-message">Will you be my Valentine?</div>
             </div>
         </div>
         
-        <div class="button-container" id="buttonContainer">
-            <button class="btn btn-yes" id="yesBtn">
-                <span class="yes-face">😊</span> Yes
+        <div class="buttons" id="buttonContainer">
+            <button class="yes-btn" id="yesBtn">
+                <span class="emoji">💖</span> Yes
             </button>
-            <button class="btn btn-no" id="noBtn">
-                <span class="no-face">🥺</span> No
+            <button class="no-btn" id="noBtn">
+                <span class="emoji">🥺</span> No
             </button>
         </div>
         
-        <div class="hidden-message" id="hiddenMessage">
-            Yay! You made me the happiest person! 💖<br>
-            Can't wait to celebrate with you! 🎉
+        <div class="response-message" id="responseMessage">
+            I knew you'd say yes!<br>
+            And yet they say I got no rizz
         </div>
         
-        <div class="footer">
-            Made with <i class="fas fa-heart" style="color: #ff4081;"></i> for someone special
+        <div class="instructions" id="instructions">
+            Try clicking the "No" button 😉
         </div>
-    </div>
-    
-    <!-- Instructions -->
-    <div class="instructions">
-        <strong>💡 Hint:</strong> Try to hover over or click the "No" button and see what happens! 😉
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const noBtn = document.getElementById('noBtn');
             const yesBtn = document.getElementById('yesBtn');
-            const hiddenMessage = document.getElementById('hiddenMessage');
+            const responseMessage = document.getElementById('responseMessage');
             const buttonContainer = document.getElementById('buttonContainer');
+            const container = document.getElementById('container');
+            const instructions = document.getElementById('instructions');
+            const imageOverlay = document.querySelector('.image-overlay');
             
             let isFloating = false;
             let noBtnOriginalPosition = null;
             let escapeCount = 0;
             
-            // Store the original position of the No button
+            // Store original position
             function storeOriginalPosition() {
                 const containerRect = buttonContainer.getBoundingClientRect();
                 const noBtnRect = noBtn.getBoundingClientRect();
@@ -440,175 +250,135 @@
                 noBtnOriginalPosition = {
                     left: noBtnRect.left,
                     top: noBtnRect.top,
-                    width: noBtnRect.width,
-                    height: noBtnRect.height,
                     containerLeft: containerRect.left,
                     containerTop: containerRect.top
                 };
             }
             
-            // Store position initially
             storeOriginalPosition();
             
-            // Function to move the No button away
+            // Move No button away
             function moveNoButtonAway() {
-                if (isFloating) return; // Already floating
+                if (isFloating) return;
                 
                 isFloating = true;
                 escapeCount++;
                 
-                // Change button to fixed positioning
+                // Change to fixed positioning
                 noBtn.style.position = 'fixed';
                 noBtn.style.zIndex = '200';
-                noBtn.style.transition = 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
                 
-                // Move to a random position
-                const maxX = window.innerWidth - noBtn.offsetWidth - 50;
-                const maxY = window.innerHeight - noBtn.offsetHeight - 50;
+                // Move to random position
+                const maxX = window.innerWidth - noBtn.offsetWidth - 30;
+                const maxY = window.innerHeight - noBtn.offsetHeight - 30;
                 
-                const randomX = Math.max(50, Math.floor(Math.random() * maxX));
-                const randomY = Math.max(50, Math.floor(Math.random() * maxY));
+                const randomX = Math.max(30, Math.floor(Math.random() * maxX));
+                const randomY = Math.max(30, Math.floor(Math.random() * maxY));
                 
                 noBtn.style.left = `${randomX}px`;
                 noBtn.style.top = `${randomY}px`;
                 
-                // Create floating text with different messages
+                // Create floating text
                 let message = "Can't catch me! 😜";
-                if (escapeCount === 1) message = "Try again! 😉";
-                if (escapeCount === 2) message = "Getting closer! 😄";
-                if (escapeCount >= 3) message = "Persistent, aren't you? 😅";
+                if (escapeCount === 1) message = "Try again!";
+                if (escapeCount >= 2) message = "Too slow! 😄";
                 
                 createFloatingText(noBtn, message);
                 
                 // Update instructions
-                document.querySelector('.instructions').innerHTML = 
-                    `<strong>🎮 The chase is on!</strong> The "No" button has escaped ${escapeCount} time${escapeCount > 1 ? 's' : ''}! Try to catch it!`;
+                instructions.textContent = `The "No" button escaped ${escapeCount} time${escapeCount > 1 ? 's' : ''}! Try to catch it!`;
                 
-                // After moving, set up continuous floating
-                setTimeout(() => {
-                    noBtn.style.transition = 'all 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-                    startContinuousFloating();
-                }, 800);
+                // Start continuous floating
+                setTimeout(startContinuousFloating, 1000);
             }
             
-            // Start continuous floating movement
+            // Continuous floating
             function startContinuousFloating() {
                 if (!isFloating) return;
                 
-                // Move to a new random position
-                const maxX = window.innerWidth - noBtn.offsetWidth - 50;
-                const maxY = window.innerHeight - noBtn.offsetHeight - 50;
+                const maxX = window.innerWidth - noBtn.offsetWidth - 30;
+                const maxY = window.innerHeight - noBtn.offsetHeight - 30;
                 
-                const randomX = Math.max(50, Math.floor(Math.random() * maxX));
-                const randomY = Math.max(50, Math.floor(Math.random() * maxY));
+                const randomX = Math.max(30, Math.floor(Math.random() * maxX));
+                const randomY = Math.max(30, Math.floor(Math.random() * maxY));
                 
                 noBtn.style.left = `${randomX}px`;
                 noBtn.style.top = `${randomY}px`;
                 
-                // Schedule next move
                 setTimeout(startContinuousFloating, 2000);
             }
             
-            // Hover event for No button
+            // Hover event for desktop
             noBtn.addEventListener('mouseenter', function() {
                 if (!isFloating) {
-                    // First time hover - make it escape
                     moveNoButtonAway();
                 } else {
-                    // Already floating - escape from cursor
                     escapeFromCursor();
                 }
             });
             
-            // Click event for No button (for touch devices)
+            // Click event for mobile
             noBtn.addEventListener('click', function(event) {
                 if (!isFloating) {
-                    // First time click - make it escape
                     moveNoButtonAway();
-                    event.preventDefault(); // Prevent any default behavior
+                    event.preventDefault();
                 } else {
-                    // Already floating - escape from click position
                     escapeFromCursor(event.clientX, event.clientY);
                 }
             });
             
-            // Function to escape from cursor position
+            // Escape from cursor
             function escapeFromCursor(cursorX, cursorY) {
                 if (!isFloating) return;
                 
-                // Add run away animation
-                noBtn.classList.add('run-away');
-                
-                // Calculate current position
                 const currentX = parseInt(noBtn.style.left) || window.innerWidth/2;
                 const currentY = parseInt(noBtn.style.top) || window.innerHeight/2;
                 
-                // Calculate escape direction (away from cursor if provided)
-                const maxX = window.innerWidth - noBtn.offsetWidth - 50;
-                const maxY = window.innerHeight - noBtn.offsetHeight - 50;
+                const maxX = window.innerWidth - noBtn.offsetWidth - 30;
+                const maxY = window.innerHeight - noBtn.offsetHeight - 30;
                 
                 let moveX, moveY;
                 
                 if (cursorX && cursorY) {
-                    // Escape away from click position
                     const deltaX = currentX - cursorX;
                     const deltaY = currentY - cursorY;
-                    
-                    // Normalize and scale
                     const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-                    moveX = (deltaX / distance) * 200;
-                    moveY = (deltaY / distance) * 200;
+                    moveX = (deltaX / distance) * 150;
+                    moveY = (deltaY / distance) * 150;
                 } else {
-                    // Random escape direction
-                    moveX = Math.random() > 0.5 ? 180 : -180;
-                    moveY = Math.random() > 0.5 ? 120 : -120;
+                    moveX = Math.random() > 0.5 ? 120 : -120;
+                    moveY = Math.random() > 0.5 ? 80 : -80;
                 }
                 
-                const newX = Math.max(50, Math.min(maxX, currentX + moveX));
-                const newY = Math.max(50, Math.min(maxY, currentY + moveY));
+                const newX = Math.max(30, Math.min(maxX, currentX + moveX));
+                const newY = Math.max(30, Math.min(maxY, currentY + moveY));
                 
-                // Set CSS variables for the animation
-                noBtn.style.setProperty('--x', `${newX - currentX}px`);
-                noBtn.style.setProperty('--y', `${newY - currentY}px`);
+                noBtn.style.left = `${newX}px`;
+                noBtn.style.top = `${newY}px`;
                 
-                // Update position
-                setTimeout(() => {
-                    noBtn.style.left = `${newX}px`;
-                    noBtn.style.top = `${newY}px`;
-                }, 500);
-                
-                // Create a floating text effect
-                createFloatingText(noBtn, "Too slow! 😄");
-                
-                // Remove the animation class after it completes
-                setTimeout(() => {
-                    noBtn.classList.remove('run-away');
-                }, 500);
+                createFloatingText(noBtn, "Missed me! 😄");
             }
             
-            // Create floating text effect
+            // Create floating text
             function createFloatingText(element, text) {
                 const floatingText = document.createElement('div');
                 floatingText.className = 'floating-text';
                 floatingText.textContent = text;
                 
-                // Position near the element
                 const rect = element.getBoundingClientRect();
                 floatingText.style.left = `${rect.left}px`;
-                floatingText.style.top = `${rect.top - 40}px`;
+                floatingText.style.top = `${rect.top - 30}px`;
                 
                 document.body.appendChild(floatingText);
                 
-                // Animate the text floating up and fading out
                 const animation = floatingText.animate([
                     { transform: 'translateY(0)', opacity: 1 },
-                    { transform: 'translateY(-50px)', opacity: 0 }
+                    { transform: 'translateY(-40px)', opacity: 0 }
                 ], {
-                    duration: 1000,
+                    duration: 800,
                     easing: 'ease-out'
                 });
                 
-                // Remove the element after animation
                 animation.onfinish = () => {
                     floatingText.remove();
                 };
@@ -616,122 +386,68 @@
             
             // Yes button interaction
             yesBtn.addEventListener('click', function() {
-                // Show the hidden message
-                hiddenMessage.style.display = 'block';
-                
-                // Stop the floating
+                responseMessage.style.display = 'block';
                 isFloating = false;
                 
-                // Create floating hearts animation
-                for(let i = 0; i < 50; i++) {
+                // Create celebration hearts
+                for(let i = 0; i < 20; i++) {
                     createFloatingHeart();
                 }
                 
-                // Change background to celebration mode
-                document.body.style.backgroundImage = 
-                    "radial-gradient(#ffc0cb 3px, transparent 3px), " +
-                    "radial-gradient(#ffb6c1 3px, transparent 3px)";
+                // Update UI
+                yesBtn.innerHTML = '<span class="emoji">🎉</span> Thank you!';
+                yesBtn.style.background = '#74DCE9';
                 
-                // Change button text
-                yesBtn.innerHTML = '<span class="yes-face">😊</span> Yay! Thank you!';
-                yesBtn.style.backgroundColor = '#4CAF50';
-                yesBtn.style.pointerEvents = 'none';
-                
-                // Make the "No" button come back to its original centered position
+                // Bring No button back and hide it
                 if (noBtnOriginalPosition) {
-                    noBtn.style.transition = 'all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
                     noBtn.style.position = 'absolute';
                     noBtn.style.left = `${noBtnOriginalPosition.left - noBtnOriginalPosition.containerLeft}px`;
                     noBtn.style.top = `${noBtnOriginalPosition.top - noBtnOriginalPosition.containerTop}px`;
-                    noBtn.style.zIndex = '100';
                     
-                    // Then make it disappear
                     setTimeout(() => {
-                        noBtn.animate([
-                            { transform: 'scale(1)', opacity: 1 },
-                            { transform: 'scale(0)', opacity: 0 }
-                        ], {
-                            duration: 800,
-                            easing: 'ease-in'
-                        }).onfinish = () => {
-                            noBtn.style.display = 'none';
-                        };
-                    }, 1000);
+                        noBtn.style.opacity = '0';
+                        noBtn.style.pointerEvents = 'none';
+                    }, 300);
                 }
                 
-                // Change the main message
-                document.querySelector('.message-box .message').innerHTML = 
-                    "You just made my day! I'm so excited to be your Valentine! 💘";
-                
-                // Change the title
-                document.querySelector('h1').innerHTML = "You Said YES! 💕";
-                
-                // Update picture caption
-                document.querySelector('.picture-caption').innerHTML = 
-                    "Our first Valentine's Day together! 💘";
-                
-                // Add sparkle effect to the picture frame
-                const pictureFrame = document.querySelector('.picture-frame');
-                pictureFrame.style.border = '12px solid #4CAF50';
-                pictureFrame.style.boxShadow = '0 0 25px #4CAF50';
-                
-                // Add celebration text to picture
-                const celebrationOverlay = document.createElement('div');
-                celebrationOverlay.innerHTML = 'YES! 💖';
-                celebrationOverlay.style.position = 'absolute';
-                celebrationOverlay.style.top = '50%';
-                celebrationOverlay.style.left = '50%';
-                celebrationOverlay.style.transform = 'translate(-50%, -50%)';
-                celebrationOverlay.style.fontSize = '3rem';
-                celebrationOverlay.style.color = '#ff1493';
-                celebrationOverlay.style.fontWeight = 'bold';
-                celebrationOverlay.style.textShadow = '2px 2px 4px white';
-                celebrationOverlay.style.zIndex = '2';
-                pictureFrame.appendChild(celebrationOverlay);
+                // Update image overlay
+                const imageMessages = document.querySelectorAll('.image-message');
+                imageMessages[0].textContent = "You said YES!";
+                imageMessages[1].textContent = "I'm so happy!";
+                imageOverlay.style.background = 'linear-gradient(to bottom, rgba(116, 220, 233, 0.55), rgba(90, 169, 185, 0.5))';
                 
                 // Hide instructions
-                document.querySelector('.instructions').style.display = 'none';
+                instructions.style.display = 'none';
+                
+                // Update title
+                document.querySelector('h1').textContent = "You said YES! 💖";
             });
             
-            // Create floating hearts for celebration
+            // Create floating hearts
             function createFloatingHeart() {
                 const heart = document.createElement('div');
-                heart.innerHTML = '💖';
+                heart.innerHTML = '🩵';
                 heart.style.position = 'fixed';
-                heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
                 heart.style.left = Math.random() * 100 + 'vw';
                 heart.style.top = '100vh';
-                heart.style.opacity = '0.8';
+                heart.style.opacity = '0.7';
                 heart.style.zIndex = '9999';
                 heart.style.pointerEvents = 'none';
                 document.body.appendChild(heart);
                 
-                // Animate the heart floating up
                 const animation = heart.animate([
-                    { transform: 'translateY(0) rotate(0deg)', opacity: 0.8 },
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 0.7 },
                     { transform: `translateY(-${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
                 ], {
-                    duration: Math.random() * 3000 + 2000,
+                    duration: Math.random() * 2000 + 1500,
                     easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
                 });
                 
-                // Remove the heart after animation completes
                 animation.onfinish = () => {
                     heart.remove();
                 };
             }
-            
-            // Add some initial floating hearts in the background
-            for(let i = 0; i < 15; i++) {
-                setTimeout(() => {
-                    createFloatingHeart();
-                }, i * 300);
-            }
-            
-            // Instructions for changing the picture
-            console.log("To add your own picture:");
-            console.log("1. Replace the 'src' attribute in the <img> tag with your image URL");
-            console.log("2. Or replace with a local image path like 'images/your-photo.jpg'");
         });
     </script>
 </body>
